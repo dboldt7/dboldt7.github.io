@@ -21,14 +21,23 @@
 }
 
 /* Job listing styles */
-#job-list-title {
-    margin-top: 0;
-    margin-bottom: 8px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #d32f2f;
-    color: #333;
-    font-size: 1.3em;
-}
+    #job-list-title {
+        margin-top: 0;
+        margin-bottom: 6px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #d32f2f;
+        color: #333;
+        font-size: 1.1em;
+    }
+    
+    /* Additional mobile-only styles */
+    @media screen and (max-width: 768px) {
+        #job-list-title {
+            font-size: 0.9em;
+            margin-bottom: 3px;
+            padding-bottom: 3px;
+        }
+    }
 
 .job-item {
     margin-bottom: 8px;
@@ -216,14 +225,36 @@
     }
     
     .job-item {
-        padding: 6px 8px;
-        margin-bottom: 6px;
+        padding: 4px 6px;
+        margin-bottom: 4px;
+    }
+    
+    /* Reduce text sizes for job items on mobile */
+    .job-title {
+        font-size: 0.85em;
+        margin: 0 0 1px 0;
+    }
+    
+    .job-company {
+        font-size: 0.75em;
+        margin-bottom: 1px;
+    }
+    
+    .job-location, .job-type, .job-salary {
+        font-size: 0.7em;
+        margin: 0;
+    }
+    
+    .job-link {
+        font-size: 0.65em;
+        padding: 1px 4px;
+        margin-top: 2px;
     }
     
     /* Compact filter styles for mobile */
     .page-header {
-        font-size: 1.4em;
-        margin: 5px 0;
+        font-size: 1.2em;
+        margin: 3px 0;
     }
     
     #filters-container {
@@ -232,8 +263,8 @@
     
     .filters-box {
         width: 100%;
-        padding: 6px 8px;
-        margin-bottom: 5px;
+        padding: 4px 6px;
+        margin-bottom: 4px;
     }
     
     .filters-group {
