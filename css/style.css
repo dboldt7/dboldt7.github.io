@@ -202,17 +202,26 @@
     html, body {
         max-width: 100%;
         overflow-x: hidden;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
     }
     
     .main-container {
         flex-direction: column;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
     }
     
     #map {
         width: 100%;
-        height: 75vh; /* Extended map height */
+        height: 75vh;
         display: block;
-        margin-bottom: 1px;
+        margin: 0;
+        padding: 0;
+        transition: all 0.3s ease;
     }
     
     #panel {
@@ -322,5 +331,79 @@
     .salary-display {
         min-width: 35px;
         font-size: 13px;
+    }
+    
+    /* Mobile slide panel functionality */
+    .panel-toggle {
+        display: block !important; /* Force display */
+        position: fixed; /* Changed to fixed position */
+        top: 150px; /* Position below header */
+        right: 10px;
+        width: 45px;
+        height: 45px;
+        background: #d32f2f;
+        border: 3px solid white;
+        border-radius: 50%;
+        color: white;
+        font-size: 26px;
+        font-weight: bold;
+        z-index: 99999; /* Extreme z-index to ensure it's visible */
+        box-shadow: 0 0 10px rgba(0,0,0,0.7);
+        outline: none;
+        padding: 0;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+    }
+    
+    /* Button positioning when panel is hidden */
+    body.panel-hidden .panel-toggle {
+        right: 10px; /* Keep in same position when panel is hidden */
+    }
+    
+    #panel {
+        transition: transform 0.3s ease;
+        position: relative;
+        z-index: 1; /* Lower z-index than the button */
+    }
+    
+    .panel-hidden #panel {
+        transform: translateX(100%);
+        display: none !important; /* Completely remove from layout */
+    }
+    
+    /* Make map fill entire width when panel is hidden on mobile */
+    @media screen and (max-width: 768px) {
+        body.panel-hidden {
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        body.panel-hidden .main-container {
+            width: 100%;
+            display: block;
+        }
+        
+        body.panel-hidden #map {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+    }
+    
+    /* Reset any potential stacking context issues */
+    #panel > * {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .panel-hidden #map {
+        width: 100% !important;
+    }
+    
+    .main-container {
+        position: relative;
+        overflow: hidden;
     }
 }
